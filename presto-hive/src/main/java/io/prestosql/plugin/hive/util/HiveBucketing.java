@@ -109,7 +109,7 @@ public final class HiveBucketing
     {
         switch (bucketingVersion) {
             case BUCKETING_V1:
-                return HiveBucketingV1.getBucketHashCode(types, page, position);
+                return HiveBucketingV2.getBucketHashCode(types, page, position);
             case BUCKETING_V2:
                 return HiveBucketingV2.getBucketHashCode(types, page, position);
             default:
@@ -250,10 +250,10 @@ public final class HiveBucketing
 
     public static BucketingVersion getBucketingVersion(Map<String, String> tableProperties)
     {
-        String bucketingVersion = tableProperties.getOrDefault(TABLE_BUCKETING_VERSION, "1");
+        String bucketingVersion = tableProperties.getOrDefault(TABLE_BUCKETING_VERSION, "2");
         switch (bucketingVersion) {
             case "1":
-                return BUCKETING_V1;
+                return BUCKETING_V2;
             case "2":
                 return BUCKETING_V2;
             default:

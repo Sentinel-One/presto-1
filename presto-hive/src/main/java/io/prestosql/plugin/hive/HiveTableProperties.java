@@ -32,7 +32,6 @@ import java.util.stream.Collectors;
 import static com.google.common.collect.ImmutableList.toImmutableList;
 import static io.prestosql.plugin.hive.metastore.SortingColumn.Order.ASCENDING;
 import static io.prestosql.plugin.hive.metastore.SortingColumn.Order.DESCENDING;
-import static io.prestosql.plugin.hive.util.HiveBucketing.BucketingVersion.BUCKETING_V1;
 import static io.prestosql.plugin.hive.util.HiveBucketing.BucketingVersion.BUCKETING_V2;
 import static io.prestosql.spi.StandardErrorCode.INVALID_TABLE_PROPERTY;
 import static io.prestosql.spi.session.PropertyMetadata.doubleProperty;
@@ -210,7 +209,7 @@ public class HiveTableProperties
     {
         Integer property = (Integer) tableProperties.get(BUCKETING_VERSION);
         if (property == null || property == 1) {
-            return BUCKETING_V1;
+            return BUCKETING_V2;
         }
         if (property == 2) {
             return BUCKETING_V2;

@@ -33,14 +33,14 @@ public class OrcReaderConfig
 
     public boolean isUseColumnNames()
     {
-        return useColumnNames;
+        return true;
     }
 
     @Config("hive.orc.use-column-names")
     @ConfigDescription("Access ORC columns using names from the file")
     public OrcReaderConfig setUseColumnNames(boolean useColumnNames)
     {
-        this.useColumnNames = useColumnNames;
+        this.useColumnNames = true;
         return this;
     }
 

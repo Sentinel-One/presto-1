@@ -105,6 +105,9 @@ public class BackgroundHiveSplitLoader
     private static final Iterable<Pattern> BUCKET_PATTERNS = ImmutableList.of(
             // Hive naming pattern per `org.apache.hadoop.hive.ql.exec.Utilities#getBucketIdFromFile()`
             Pattern.compile("(0\\d+)_\\d+.*"),
+            //Spark naming pattern part-00000-505f5188-2f6c-441b-b8c5-c7752a8c5747_00000.c000.snappy.orc
+            //art-r-$partition%05d-${System.currentTimeMillis}%015d.orc"
+            Pattern.compile("part-[a-z0-9\\\\-]*_(\\d+)[\\.]*[a-z0-9]*[\\.][a-z]*.orc"),
             // legacy Presto naming pattern (current version matches Hive)
             Pattern.compile("\\d{8}_\\d{6}_\\d{5}_[a-z0-9]{5}_bucket-(\\d+)(?:[-_.].*)?"));
 
