@@ -108,6 +108,8 @@ public class BackgroundHiveSplitLoader
             //Spark naming pattern part-00000-505f5188-2f6c-441b-b8c5-c7752a8c5747_00000.c000.snappy.orc
             //art-r-$partition%05d-${System.currentTimeMillis}%015d.orc"
             Pattern.compile("part-[a-z0-9\\\\-]*_(\\d+)[\\.]*[a-z0-9]*[\\.][a-z]*.orc"),
+            // add another pattern for unified orc: usea1-amit-qa.sentinelone.net_1d9c7ceb-bd0f-4df7-b7f4-15653f3d7b7e_bucketId=0_DEFAULT_0.orc
+            Pattern.compile(".*_bucketId=(\\d+)_.*.orc"),
             // legacy Presto naming pattern (current version matches Hive)
             Pattern.compile("\\d{8}_\\d{6}_\\d{5}_[a-z0-9]{5}_bucket-(\\d+)(?:[-_.].*)?"));
 
