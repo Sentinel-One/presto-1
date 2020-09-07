@@ -222,7 +222,7 @@ public class HiveTableProperties
     {
         Integer property = (Integer) tableProperties.get(BUCKETING_VERSION);
         if (property == null || property == 1) {
-            return BUCKETING_V1;
+            return BUCKETING_V2;
         }
         if (property == 2) {
             return BUCKETING_V2;
