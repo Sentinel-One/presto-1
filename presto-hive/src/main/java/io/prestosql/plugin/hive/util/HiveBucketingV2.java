@@ -101,8 +101,7 @@ final class HiveBucketingV2
                         return Murmur3.hash32(bytes(doubleToRawLongBits(doubleToLongBits(prestoType.getDouble(block, position)))));
                     case STRING:
 //                        return Murmur3.hash32(prestoType.getSlice(block, position).getBytes());
-                          return Murmur3.hash32(prestoType.getSlice(block, position).getBytes(), 0, prestoType.getSlice(block, position).getBytes().length, 42);
-
+                        return Murmur3.hash32(prestoType.getSlice(block, position).getBytes(), 0, prestoType.getSlice(block, position).getBytes().length, 42);
                     case VARCHAR:
 //                        return Murmur3.hash32(prestoType.getSlice(block, position).getBytes());
                         return Murmur3.hash32(prestoType.getSlice(block, position).getBytes(), 0, prestoType.getSlice(block, position).getBytes().length, 42);
