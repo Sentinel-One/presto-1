@@ -122,7 +122,11 @@ public class BackgroundHiveSplitLoader
             Pattern.compile("\\d{8}_\\d{6}_\\d{5}_[a-z0-9]{5}_bucket-(\\d+)(?:[-_.].*)?"),
             // Hive naming pattern per `org.apache.hadoop.hive.ql.exec.Utilities#getBucketIdFromFile()`
             Pattern.compile("(\\d+)_\\d+.*"),
-            // Hive ACID with optional direct insert attempt id
+            //art-r-$partition%05d-${System.currentTimeMillis}%015d.orc"
+            Pattern.compile("part-[a-z0-9\\\\-]*_(\\d+)[\\.]*[a-z0-9]*[\\.][a-z]*.orc"),
+            // add another pattern for unified orc: usea1-amit-qa.sentinelone.net_1d9c7ceb-bd0f-4df7-b7f4-15653f3d7b7e_bucketId=0_DEFAULT_0.orc
+            Pattern.compile(".*_bucketId=(\\d+)_.*.orc"),
+            // Hive ACID
             BUCKET_WITH_OPTIONAL_ATTEMPT_ID_PATTERN);
 
     private static final ListenableFuture<?> COMPLETED_FUTURE = immediateFuture(null);

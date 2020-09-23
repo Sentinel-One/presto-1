@@ -100,9 +100,11 @@ final class HiveBucketingV2
                         // https://github.com/apache/hive/blob/7dc47faddba9f079bbe2698aaa4d8712e7654f87/serde/src/java/org/apache/hadoop/hive/serde2/objectinspector/ObjectInspectorUtils.java#L836
                         return Murmur3.hash32(bytes(doubleToRawLongBits(doubleToLongBits(prestoType.getDouble(block, position)))));
                     case STRING:
-                        return Murmur3.hash32(prestoType.getSlice(block, position).getBytes());
+//                        return Murmur3.hash32(prestoType.getSlice(block, position).getBytes());
+                        return Murmur3.hash32(prestoType.getSlice(block, position).getBytes(), 0, prestoType.getSlice(block, position).getBytes().length, 42);
                     case VARCHAR:
-                        return Murmur3.hash32(prestoType.getSlice(block, position).getBytes());
+//                        return Murmur3.hash32(prestoType.getSlice(block, position).getBytes());
+                        return Murmur3.hash32(prestoType.getSlice(block, position).getBytes(), 0, prestoType.getSlice(block, position).getBytes().length, 42);
                     case DATE:
                         // day offset from 1970-01-01
                         return Murmur3.hash32(bytes(toIntExact(prestoType.getLong(block, position))));

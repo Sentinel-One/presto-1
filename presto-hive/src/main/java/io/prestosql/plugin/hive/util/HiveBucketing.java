@@ -291,10 +291,10 @@ public final class HiveBucketing
 
     public static BucketingVersion getBucketingVersion(Map<String, String> tableProperties)
     {
-        String bucketingVersion = tableProperties.getOrDefault(TABLE_BUCKETING_VERSION, "1");
+        String bucketingVersion = tableProperties.getOrDefault(TABLE_BUCKETING_VERSION, "2");
         switch (bucketingVersion) {
             case "1":
-                return BUCKETING_V1;
+                return BUCKETING_V2;
             case "2":
                 return BUCKETING_V2;
             default:
